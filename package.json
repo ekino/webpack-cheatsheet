@@ -1,0 +1,43 @@
+{
+    "name": "ekino-webpack-cheatsheet",
+    "version": "0.0.1",
+    "description": "Ekino Webpack Cheat Sheet Project",
+    "main": "dist/js/app.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ekino/webpack-cheatsheet"
+    },
+    "author": "Thomas Rabaix",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ekino/webpack-cheatsheet/issues"
+    },
+    "homepage": "https://github.com/ekino/webpack-cheatsheet",
+    "dependencies": {
+        "react": "^0.13",
+        "lodash": "~3.10"
+    },
+    "devDependencies": {
+        "babel": "~5.8",
+        "babel-loader": "~5.3",
+        "bootstrap-sass": "^3.3.5",
+        "clean-webpack-plugin": "^0.1.3",
+        "css-loader": "^0.18",
+        "extract-text-webpack-plugin": "^0.8.2",
+        "file-loader": "^0.8.4",
+        "font-awesome": "^4.4.0",
+        "html-webpack-plugin": "^1.6.1",
+        "node-sass": "^3.2",
+        "path": "^0.12.7",
+        "react-hot-loader": "^1.3.0",
+        "react-intl": "^1.2",
+        "resolve-url-loader": "^1.1.0",
+        "sass-loader": "^2.0",
+        "style-loader": "^0.12",
+        "webpack": "~1.12",
+        "webpack-dev-server": "^1.11.0"
+    },
+    "scripts": {
+        "webpack": "node webpack.config.js"
+    }
+}
