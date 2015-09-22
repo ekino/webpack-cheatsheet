@@ -19,11 +19,11 @@ var config = {
     // we use path.join to make it work cross plateform
     context: path.join(__dirname, 'src'),
     entry: process.env.NODE_ENV == 'production' ? {
-        app: ["./index.jsx"]
+        app: ["./index.js"]
     } : {
         // WebpackDevServer is only required on development, with key value entry mode, the
         // webpack/hot/only-dev-server entry is required on each entry.
-        app: ["./index.jsx", 'webpack/hot/only-dev-server'],
+        app: ["./index.js", 'webpack/hot/only-dev-server'],
         // The client entry is used to serve an iframe with reloading information
         // The final url will be http://localhost:3000/webpack-dev-server
         client: 'webpack-dev-server/client?http://'+devserver.ip+':'+devserver.port

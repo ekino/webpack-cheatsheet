@@ -14,8 +14,9 @@
     },
     "homepage": "https://github.com/ekino/webpack-cheatsheet",
     "dependencies": {
-        "react": "^0.13",
-        "lodash": "~3.10"
+        "lodash": "~3.10",
+        "react": "^0.13.3",
+        "react-router": "0.13.3"
     },
     "devDependencies": {
         "babel": "~5.8",
