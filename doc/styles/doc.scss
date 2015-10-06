@@ -2,33 +2,34 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 .pointer{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .comment-block-toggle{
-    overflow: hidden;
-    max-height: 0;
-    &--visible{
-        max-height:100px;
-    }
-    transition: all .4s;
+  overflow: hidden;
+  max-height: 0;
+  &--visible{
+    max-height: 150px;
+  }
+  transition: all .4s;
 }
 
 .over{
-    background: rgba(255, 255, 0, 0.5);
+  background: rgba(255, 255, 0, 0.5);
 }
 
 .doc-text{
-    float: left;
-    font-size: 21px;
-    position: relative;
+  font-size: 1.3em;
+  position: relative;
+  text-align: left;
+  overflow-wrap: break-word;
 }
 
 .editor {
-    position: relative;
-    width: 100%;
-    color: white;
-    font-size: 1em;
-    background: #313437;
-    word-wrap: break-word;
+  position: relative;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+  background: #313437;
+  word-wrap: break-word;
 }

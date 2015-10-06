@@ -1,7 +1,7 @@
 /*
- * Creates html version of itself and wraps it inside html page tags.
- * Finally opens it in the browser.
- */
+* Creates html version of itself and wraps it inside html page tags.
+* Finally opens it in the browser.
+*/
 
 import Highlights from 'highlights';
 import fs from 'fs';
@@ -14,24 +14,25 @@ let helper = './doc/helpers/DocHelper.js';
 let exec = childProcess.exec;
 let highlighter = new Highlights();
 
-const MakeDoc = {
+const MakeDoc    =     {
     // Highlight code and generate html with style reference included
-    highlight: (code) => {
+    /*eslint-disable */
+    highlight: () => {
         let highlightedCode = highlighter.highlightSync({
             fileContents: code,
-            scopeName:    'source.js'
+            scopeName: 'source.js'
         });
         return [
-            "const DocHelper = {",
-            "   getDocHtml: ()=>{",
-            "       var result = '" + highlightedCode + "'",
-            "       return result;",
-            "   }",
-            "};",
-            "export default DocHelper;"
+            'const DocHelper = {',
+            '   getDocHtml: ()=>{',
+            '       var result = \'' + highlightedCode + '\'',
+            '       return result;',
+            '   }',
+            '};',
+            'export default DocHelper;'
         ].join('\n');
-
     }
+    /*eslint-enable */
 };
 
 var js = MakeDoc.highlight(code);

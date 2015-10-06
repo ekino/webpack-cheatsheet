@@ -5,29 +5,29 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class DocText extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {currentDoc:''}
-    }
+  constructor(props) {
+    super(props);
+    this.state = {currentDoc:''}
+  }
 
-    componentDidMount() {
+  componentDidMount() {
 
-    }
+  }
 
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            currentDoc: nextProps.currentDoc
-        })
-    }
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      currentDoc: nextProps.currentDoc
+    })
+  }
 
-    render() {
+  render() {
 
-        return (
-            <pre className="editor">
-                { this.state.currentDoc }
-            </pre>
-        );
-    }
+    return (
+      <div className="doc-text">
+        <pre>{ this.state.currentDoc }</pre>
+      </div>
+    );
+  }
 }
 DocText.propTypes = {
 
