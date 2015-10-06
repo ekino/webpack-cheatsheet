@@ -63,22 +63,35 @@ var config = {
             include: path.join(__dirname, contextDir),
             // In production, we don't need react-hot as it include a lot of code.
             loaders: process.env.NODE_ENV == 'production' ?
-                 ['babel'] :
-                 ['react-hot', 'babel']
+            ['babel'] :
+            ['react-hot', 'babel']
         }, {
             test:   /\.scss$/,
             // resolve-url allow to resolve url() please keep it mind to set the output.publicPath
             //   to use absolute path. This is usefull is you have fonts and css folders on
             //   different folders
             loader: process.env.NODE_ENV == 'production' ?
-                // the plugin is used to store css content to an external file
-                // without this plugin css will be store as a variable inside the final
-                // bundle file
-                ExtractTextPlugin.extract('css!resolve-url!sass') :
+            // the plugin is used to store css content to an external file
+            // without this plugin css will be store as a variable inside the final
+            // bundle file
+            ExtractTextPlugin.extract('css!resolve-url!sass') :
 
-                // the style loader is usefull to load the style inline with WebpackDevServer
-                'style!css!resolve-url!sass'
-        }, {
+            // the style loader is usefull to load the style inline with WebpackDevServer
+            'style!css!resolve-url!sass'
+        },
+        {
+            test: /\.less$/,
+            // resolve-url allow to resolve url() please keep it mind to set the output.publicPath
+            //   to use absolute path. This is usefull is you have fonts and css folders on
+            //   different folders
+            loader: process.env.NODE_ENV == 'production' ?
+            // the plugin is used to store css content to an external file
+            // without this plugin css will be store as a variable inside the final
+            // bundle file
+            ExtractTextPlugin.extract('css!resolve-url!sass') :
+            // the style loader is usefull to load the style inline with WebpackDevServer
+            'style!css!less'
+        },{
             // match woff fonts
             test:  /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             // the file loader will copy the font into a dedicated folder
@@ -147,7 +160,7 @@ if ('production' === process.env.NODE_ENV) {
     // reduce the final size of javascript files
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         compress: {
-//            warning: false
+            //            warning: false
         },
         mangle:   { // default values
             except: ['$super', '$', 'exports', 'require']
