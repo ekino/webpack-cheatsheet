@@ -4,14 +4,11 @@
 
 import React, { Component, PropTypes } from 'react';
 
+
 export default class DocText extends Component {
   constructor(props) {
     super(props);
     this.state = {currentDoc:''}
-  }
-
-  componentDidMount() {
-
   }
 
   componentWillReceiveProps(nextProps){
@@ -20,12 +17,18 @@ export default class DocText extends Component {
     })
   }
 
+  createMarkup(){
+    return { __html: this.state.currentDoc };
+  }
+
   render() {
 
     return (
-      <div className="doc-text">
-        <pre>{ this.state.currentDoc }</pre>
+
+      <div id="doc-text" className="doc-text">
+        {this.state.currentDoc}
       </div>
+
     );
   }
 }

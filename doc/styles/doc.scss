@@ -19,8 +19,8 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 }
 
 .doc-text{
+  position: fixed;
   font-size: 1.3em;
-  position: relative;
   text-align: left;
   overflow-wrap: break-word;
 }

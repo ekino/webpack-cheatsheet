@@ -44,18 +44,28 @@ export default class Doc extends Component {
       $(line).next().bind('click',this, this.handleClick);
       $(line).next().bind('mouseover',this, this.handleMouseover);
       $(line).next().bind('mouseout',this, this.handlerMouseout);
+      // console.log($(line));
+      // console.log('--___________________________________--')
       this.props.model[i]  = this.clean($(line).text());
     });
   }
 
+
+
   clean(text){
-    let filter = _.unescape(text.toString());
-    filter = filter.replace('/','');
-    filter = filter.replace(/\*/g, '');
-    filter = filter.replace(/ +(?= )/g,'');
-    filter = filter.replace(new RegExp('&nbsp;'),' ');
+    // let filter = _.unescape(text.toString());
+    // let filter = text.replace('/','');
+    // filter = filter.replace(/\*/g, '');
+    // filter = filter.replace(/ +(?= )/g,'');
+    // filter = filter.replace(new RegExp('&nbsp;'),' ');
+    // filter = $.trim(filter);
+    // return filter;
+    let filter = text.replace('/*','');
+    filter = filter.replace('*/','');
+    filter = filter.replace('//','');
     filter = $.trim(filter);
     return filter;
+
   }
 
   handleMouseover(e){

@@ -4,35 +4,34 @@
 */
 
 import Highlights from 'highlights';
+import process from 'process';
 import fs from 'fs';
-import path from 'path';
-import childProcess from 'child_process';
-import React, { Component } from 'react';
 
-let code = fs.readFileSync('./webpack.config.js', 'utf-8');
+let fileName = process.argv[2];
+let code = fs.readFileSync('./' + fileName, 'utf-8');
 let helper = './doc/helpers/DocHelper.js';
-let exec = childProcess.exec;
 let highlighter = new Highlights();
 
+
 const MakeDoc    =     {
-    // Highlight code and generate html with style reference included
-    /*eslint-disable */
-    highlight: () => {
-        let highlightedCode = highlighter.highlightSync({
-            fileContents: code,
-            scopeName: 'source.js'
-        });
-        return [
-            'const DocHelper = {',
-            '   getDocHtml: ()=>{',
-            '       var result = \'' + highlightedCode + '\'',
-            '       return result;',
-            '   }',
-            '};',
-            'export default DocHelper;'
-        ].join('\n');
-    }
-    /*eslint-enable */
+  // Highlight code and generate html with style reference included
+  /*eslint-disable */
+  highlight: () => {
+    let highlightedCode = highlighter.highlightSync({
+      fileContents: code,
+      scopeName: 'source.js'
+    });
+    return [
+      'const DocHelper = {',
+      '   getDocHtml: ()=>{',
+      '       var result = \'' + highlightedCode + '\'',
+      '       return result;',
+      '   }',
+      '};',
+      'export default DocHelper;'
+    ].join('\n');
+  }
+  /*eslint-enable */
 };
 
 var js = MakeDoc.highlight(code);
