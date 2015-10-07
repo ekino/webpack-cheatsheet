@@ -14,7 +14,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || (require.main === module ? 'devel
 
 // Configure host settings for the WebDevServer
 var devserver = { ip: 'localhost', port: 3000 };
-var contextDir = 'doc';
+var contextDir = process.argv[2] || 'src';
 var config = {
   // we use path.join to make it work cross plateform
   context: path.join(__dirname, contextDir),

@@ -3,7 +3,7 @@
 */
 
 import React, { Component, PropTypes } from 'react';
-
+import {Button} from 'react-bootstrap';
 
 export default class DocText extends Component {
   constructor(props) {
@@ -23,16 +23,20 @@ export default class DocText extends Component {
 
   render() {
 
-    return (
+    let { toggle } = this.props;
 
-      <div id="doc-text" className="doc-text">
-        {this.state.currentDoc}
+    return (
+      <div>
+        <div className="doc_helper-info">
+          {this.state.currentDoc}
+        </div>
+        <Button bsStyle='primary' className='doc_helper-toggle-btn' onClick={toggle}> Toggle Comments </Button>
       </div>
 
     );
   }
 }
 DocText.propTypes = {
-
+  toggle: PropTypes.func.required
 };
 DocText.defaultProps = { };

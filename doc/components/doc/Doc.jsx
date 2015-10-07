@@ -15,12 +15,10 @@ import _ from 'lodash';
 export default class Doc extends Component {
   constructor(props) {
     super(props);
-    this.state = {currentDoc:''}
+    this.state = {currentDoc:'',open:false}
   }
 
   componentDidMount() {
-    let doc = document.getElementById('doc');
-
     $('pre > .line').each((i,line) => {
 
       let isComment = $('span.comment', line).length > 0;
@@ -44,28 +42,16 @@ export default class Doc extends Component {
       $(line).next().bind('click',this, this.handleClick);
       $(line).next().bind('mouseover',this, this.handleMouseover);
       $(line).next().bind('mouseout',this, this.handlerMouseout);
-      // console.log($(line));
-      // console.log('--___________________________________--')
       this.props.model[i]  = this.clean($(line).text());
     });
   }
 
-
-
   clean(text){
-    // let filter = _.unescape(text.toString());
-    // let filter = text.replace('/','');
-    // filter = filter.replace(/\*/g, '');
-    // filter = filter.replace(/ +(?= )/g,'');
-    // filter = filter.replace(new RegExp('&nbsp;'),' ');
-    // filter = $.trim(filter);
-    // return filter;
     let filter = text.replace('/*','');
     filter = filter.replace('*/','');
     filter = filter.replace('//','');
     filter = $.trim(filter);
     return filter;
-
   }
 
   handleMouseover(e){
@@ -100,24 +86,32 @@ export default class Doc extends Component {
     return { __html: DocHelper.getDocHtml() };
   }
 
+  toggle(){
+    $('pre > .comment-block').each((i,line) => {
+      $(line).toggleClass('comment-block-toggle--visible');
+    });
+  }
+
   render() {
     return (
-      <Grid>
-        <Row className='show-grid container-fluid'>
-          <Col xs={10} md={7}>
-            <div dangerouslySetInnerHTML={this.createMarkup()}>
+      <div className='doc'>
+        <Grid>
+          <Row>
+            <Col xs={10} md={7} className='doc_code'>
+              <div dangerouslySetInnerHTML={this.createMarkup()}>
 
-            </div>
-          </Col>
-          <Col xs={6} md={5}>
-            <DocText currentDoc={ this.state.currentDoc }/>
-          </Col>
-        </Row>
-      </Grid>
+              </div>
+            </Col>
+            <Col xs={6} md={5} className='doc_helper'>
+              <DocText toggle={this.toggle} currentDoc={ this.state.currentDoc }/>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }
 Doc.propTypes = {
-  model: PropTypes.object,
+  model: PropTypes.object
 };
-Doc.defaultProps = { model: {} };
+Doc.defaultProps = { model: {}};

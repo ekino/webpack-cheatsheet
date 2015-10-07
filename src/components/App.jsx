@@ -9,7 +9,7 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <Link to='/doc'>Documentation</Link>
+                You work in the 'src' folder
                 <RouteHandler />
             </div>
         );
