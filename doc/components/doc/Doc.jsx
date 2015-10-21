@@ -1,12 +1,10 @@
 /**
 * Created by Pebie on 22/09/15.
 */
+import '../../styles/components/doc.scss';
 
-import '../../styles/monokai.less';
-import '../../styles/doc.scss';
-
-import React, { Component, PropTypes } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import React, { Component, PropTypes, Popover, Tooltip } from 'react';
+import { Grid, Row, Col, Modal, OverlayTrigger, Button } from 'react-bootstrap';
 import DocHelper from '../../helpers/DocHelper.js';
 import DocText from './DocText.jsx';
 import $ from 'jquery';
@@ -15,7 +13,7 @@ import _ from 'lodash';
 export default class Doc extends Component {
   constructor(props) {
     super(props);
-    this.state = {currentDoc:'',open:false}
+    this.state = {currentDoc:'Roll over the code !',open:false}
   }
 
   componentDidMount() {
@@ -50,6 +48,8 @@ export default class Doc extends Component {
     let filter = text.replace('/*','');
     filter = filter.replace('*/','');
     filter = filter.replace('//','');
+    filter = filter.replace(' //','');
+    filter = filter.replace('// ','');
     filter = $.trim(filter);
     return filter;
   }
@@ -72,9 +72,6 @@ export default class Doc extends Component {
 
   handleClick(e){
 
-    $('.comment-block-toggle').each((i,line)=>{
-      $(line).removeClass('comment-block-toggle--visible');
-    });
 
     let _this = e.data;
     let $currentTarget = $(e.currentTarget);
@@ -87,26 +84,33 @@ export default class Doc extends Component {
   }
 
   toggle(){
-    $('pre > .comment-block').each((i,line) => {
-      $(line).toggleClass('comment-block-toggle--visible');
-    });
+    if(this.state.open){
+      $('pre > .comment-block').each((i,line) => {
+        $(line).removeClass('comment-block-toggle--visible');
+      });
+    }else{
+      $('pre > .comment-block').each((i,line) => {
+        $(line).addClass('comment-block-toggle--visible');
+      });
+    }
+    this.setState({
+      open:!this.state.open
+    })
   }
 
   render() {
     return (
       <div className='doc'>
-        <Grid>
-          <Row>
-            <Col xs={10} md={7} className='doc_code'>
-              <div dangerouslySetInnerHTML={this.createMarkup()}>
 
-              </div>
-            </Col>
-            <Col xs={6} md={5} className='doc_helper'>
-              <DocText toggle={this.toggle} currentDoc={ this.state.currentDoc }/>
-            </Col>
-          </Row>
-        </Grid>
+        <div className='doc_code'>
+          <div dangerouslySetInnerHTML={this.createMarkup()}>
+
+          </div>
+        </div>
+        <div className='doc_helper'>
+          <DocText toggle={this.toggle.bind(this)} currentDoc={ this.state.currentDoc }/>
+        </div>
+
       </div>
     );
   }

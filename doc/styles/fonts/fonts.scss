@@ -1,0 +1,25 @@
+@import 'font-awesome/font-awesome';
+@font-face {
+  font-family: Graphik-Bold;
+  src: url("fonts/graphik-bold-webfont.eot");
+  src: local('x'),
+  url("fonts/graphik-bold-webfont.woff") format('woff'),
+  url("fonts/graphik-bold-webfont.ttf") format('truetype'),
+  url("fonts/graphik-bold-webfont.svg") format('svg');
+}
+@font-face {
+  font-family: Graphik-Light;
+  src: url("fonts/graphik-light-webfont.eot");
+  src: local('x'),
+  url("fonts/graphik-light-webfont.woff") format('woff'),
+  url("fonts/graphik-light-webfont.ttf") format('truetype'),
+  url("fonts/graphik-light-webfont.svg") format('svg');
+}
+@font-face {
+  font-family: Graphik-Regular;
+  src: url("fonts/graphik-regular-webfont.eot");
+  src: local('x'),
+  url("fonts/graphik-regular-webfont.woff") format('woff'),
+  url("fonts/graphik-regular-webfont.ttf") format('truetype'),
+  url("fonts/graphik-regular-webfont.svg") format('svg');
+}

@@ -1,0 +1,61 @@
+.doc{
+  padding-top:50px;
+  &_code{
+    width: 50%;
+    float: left;
+    .editor {
+      position: relative;
+      width: 100%;
+      color: white;
+      font-size: 1em;
+      background: #313437;
+      word-wrap: break-word;
+      border: none;
+      border-radius: 0;
+    }
+    .comment-block-toggle{
+      overflow: hidden;
+      max-height: 0;
+      &--visible{
+        max-height: 150px;
+      }
+      transition: all .4s;
+    }
+
+  }
+  &_helper{
+
+    hr{
+      border-color:#9d9d9c;
+    }
+    &-title{
+      font-family: Graphik-Light;
+      margin: 0;
+      letter-spacing: normal;
+      word-spacing: normal;
+      display: block;
+    }
+
+    &-info{
+
+      background: #000;
+      color: #9d9d9c;
+      padding: 10px;
+      font-size: 1.3em;
+      text-align: left;
+      overflow-wrap: break-word;
+      font-family: Graphik-Regular
+    }
+    &-toggle{
+      text-align: right;
+      &-text{
+        font-size: 0.9em;
+        padding-right: 20px;
+        vertical-align: top;
+      }
+      i{
+        font-size: 1.5em;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+body{
+  background: black;
+}
+
+.main{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.over{
+  background: rgba(255, 255, 0, 0.5);
+}

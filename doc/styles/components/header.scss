@@ -1,0 +1,14 @@
+.header{
+  position: fixed;
+  width: 100%;
+  background: black;
+  font-family: Graphik-Bold;
+  color: white;
+  z-index: 100;
+  height:50px;
+  line-height: 50px;
+  max-width: 1280px;
+  &-text{
+    font-size: 1.3em;
+  }
+}
