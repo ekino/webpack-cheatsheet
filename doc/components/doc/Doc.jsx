@@ -13,12 +13,15 @@ import _ from 'lodash';
 export default class Doc extends Component {
   constructor(props) {
     super(props);
-    this.state = {currentDoc:'Roll over the code !',open:false}
+    this.state = {
+      currentDoc:'Roll over the code !',
+      open:false,
+      footerHeight:114
+    }
   }
-
   componentDidMount() {
-    $('pre > .line').each((i,line) => {
 
+    $('pre > .line').each((i,line) => {
       let isComment = $('span.comment', line).length > 0;
       if(isComment){
         $(line).addClass('is-comment');
@@ -60,8 +63,10 @@ export default class Doc extends Component {
     $currentTarget.addClass('over');
     let id = $currentTarget.attr('data-doc-id');
     _this.setState({
-      currentDoc : _this.props.model[id]
+      currentDoc : _this.props.model[id],
+      footerHeight: $('.doc_helper').innerHeight()
     });
+    console.log(_this.state);
   }
 
   handlerMouseout(e){
@@ -71,8 +76,6 @@ export default class Doc extends Component {
   }
 
   handleClick(e){
-
-
     let _this = e.data;
     let $currentTarget = $(e.currentTarget);
     let id = $currentTarget.attr('data-doc-id');
@@ -99,10 +102,13 @@ export default class Doc extends Component {
   }
 
   render() {
+    let divStyle = {
+      'paddingBottom': this.state.footerHeight
+    };
     return (
       <div className='doc'>
 
-        <div className='doc_code'>
+        <div className='doc_code' style={divStyle}>
           <div dangerouslySetInnerHTML={this.createMarkup()}>
 
           </div>

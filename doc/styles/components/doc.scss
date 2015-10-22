@@ -1,10 +1,12 @@
 .doc{
   padding-top:50px;
+  position: relative;
   &_code{
-    width: 50%;
-    float: left;
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
     .editor {
       position: relative;
+      margin:0;
       width: 100%;
       color: white;
       font-size: 1em;
@@ -24,7 +26,11 @@
 
   }
   &_helper{
-
+    background: #1E1E1E;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
     hr{
       border-color:#9d9d9c;
     }
@@ -37,16 +43,22 @@
     }
 
     &-info{
-
-      background: #000;
       color: #9d9d9c;
-      padding: 10px;
+      max-width: 1280px;
+      margin: auto;
+      box-shadow: 0px -1px 5px 0px #1E1E1E;
       font-size: 1.3em;
       text-align: left;
+      padding:10px;
       overflow-wrap: break-word;
-      font-family: Graphik-Regular
+      font-family: Graphik-Regular;
+    }
+    h3{
+    display: inline-block;
     }
     &-toggle{
+
+      display: inline-block;
       text-align: right;
       &-text{
         font-size: 0.9em;

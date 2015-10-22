@@ -5,6 +5,7 @@
 import React, { Component, PropTypes } from 'react';
 import {Button}                        from 'react-bootstrap';
 import classNames                      from 'classnames';
+import Footer                          from '../layout/Footer.jsx';
 
 export default class DocText extends Component {
   constructor(props) {
@@ -41,14 +42,14 @@ export default class DocText extends Component {
         <div>
           <div className="doc_helper-info">
             <h3 className="doc_helper-title">Documentation</h3>
+              <div className="doc_helper-toggle pull-right">
+                <span className="doc_helper-toggle-text">Toggle Comments</span>
+                <i className={toggleClass} onClick={this.toggle.bind(this)}></i>
+              </div>
             <hr/>
             {this.state.currentDoc}
-            <hr/>
-            <div className="doc_helper-toggle">
-              <span className="doc_helper-toggle-text">Toggle Comments</span>
-              <i className={toggleClass} onClick={this.toggle.bind(this)}></i>
-            </div>
           </div>
+
         </div>
 
     );
